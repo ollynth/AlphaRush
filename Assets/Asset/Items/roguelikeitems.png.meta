@@ -1,0 +1,572 @@
+fileFormatVersion: 2
+guid: 7c417fa196b446c459f4c87ae72809e5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GreenBook1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 649586bdc14fbfd4aa2a4ddc381131fd
+      internalID: -1163253949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RedBook1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6992410f8d69e1944b21c5c1a2645972
+      internalID: 770132184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueBook1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e590d700cad60c4d99e92372386b8a2
+      internalID: 776216072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roguelikeitems_165
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2d863c486c7af744902695358afb83e
+      internalID: 848818374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roguelikeitems_166
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35fe8436e1b965d4da49c0f6f436f820
+      internalID: 1682324503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RedBook2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ca28a1526268474c8563b805e9efdcf
+      internalID: -1992014230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roguelikeitems_175
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff8b1a4f804b1d342a85f83b9b952582
+      internalID: -662589376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roguelikeitems_176
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79664e2dada5bbc41b408e97b97e1830
+      internalID: 1706296839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roguelikeitems_177
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5d31dc6d83b1b44eaff2752f49e9de2
+      internalID: 1192756130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roguelikeitems_178
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e8ee50117619b4998cfe8499ee5bd2
+      internalID: 380306446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roguelikeitems_179
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244be0f0f15bf1c4c84724f4a4215558
+      internalID: -1261555997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roguelikeitems_180
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a8fa85d00c61a040a35f3607d9e7835
+      internalID: 1235875139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BlueBook1: 776216072
+      GreenBook1: -1163253949
+      RedBook1: 770132184
+      RedBook2: -1992014230
+      roguelikeitems_0: 236102916
+      roguelikeitems_1: -1234812392
+      roguelikeitems_10: 627686712
+      roguelikeitems_100: 2053048234
+      roguelikeitems_101: 1118760518
+      roguelikeitems_102: 940754641
+      roguelikeitems_103: -258605626
+      roguelikeitems_104: 1673542030
+      roguelikeitems_105: 319523771
+      roguelikeitems_106: 1459663650
+      roguelikeitems_107: -654494734
+      roguelikeitems_108: 814730892
+      roguelikeitems_109: -889967772
+      roguelikeitems_11: 1577907670
+      roguelikeitems_110: -758463290
+      roguelikeitems_111: -920199810
+      roguelikeitems_112: -2038258036
+      roguelikeitems_113: -416317338
+      roguelikeitems_114: -1833446069
+      roguelikeitems_115: -990871106
+      roguelikeitems_116: 400370377
+      roguelikeitems_117: -285535901
+      roguelikeitems_118: 862825480
+      roguelikeitems_119: -1046678031
+      roguelikeitems_12: -1384600978
+      roguelikeitems_120: 150938862
+      roguelikeitems_121: 2041405003
+      roguelikeitems_122: -1337508902
+      roguelikeitems_123: -1438417800
+      roguelikeitems_124: -1600335802
+      roguelikeitems_125: 881335388
+      roguelikeitems_126: -798326558
+      roguelikeitems_127: -1066634232
+      roguelikeitems_128: 1740064163
+      roguelikeitems_129: 991437929
+      roguelikeitems_13: -1631106785
+      roguelikeitems_130: 182902004
+      roguelikeitems_131: 1892658801
+      roguelikeitems_132: 1948563009
+      roguelikeitems_133: -1307216058
+      roguelikeitems_134: -1343515964
+      roguelikeitems_135: -1881153796
+      roguelikeitems_136: 1584042861
+      roguelikeitems_137: 2036416171
+      roguelikeitems_138: 1547602852
+      roguelikeitems_139: -193927000
+      roguelikeitems_14: -953381149
+      roguelikeitems_140: 130967388
+      roguelikeitems_141: 1489863349
+      roguelikeitems_142: -1557352848
+      roguelikeitems_143: -1153048814
+      roguelikeitems_144: -824635078
+      roguelikeitems_145: -701212018
+      roguelikeitems_146: 1306981087
+      roguelikeitems_147: -1059790090
+      roguelikeitems_148: 459434307
+      roguelikeitems_149: -54011555
+      roguelikeitems_15: -1342543289
+      roguelikeitems_150: -537607063
+      roguelikeitems_151: 1635876892
+      roguelikeitems_152: 2091649125
+      roguelikeitems_153: 602948638
+      roguelikeitems_154: -1162985799
+      roguelikeitems_155: 1541513243
+      roguelikeitems_156: 1194982837
+      roguelikeitems_157: 1128823479
+      roguelikeitems_158: -1753741238
+      roguelikeitems_159: -241693019
+      roguelikeitems_16: -313903880
+      roguelikeitems_160: -1272488974
+      roguelikeitems_161: -1801502263
+      roguelikeitems_165: 848818374
+      roguelikeitems_166: 1682324503
+      roguelikeitems_168: -1137479022
+      roguelikeitems_169: 1090522347
+      roguelikeitems_17: 1664668802
+      roguelikeitems_170: 1066041838
+      roguelikeitems_171: 875013486
+      roguelikeitems_172: -1684663759
+      roguelikeitems_173: -1731845077
+      roguelikeitems_174: 759286782
+      roguelikeitems_175: -662589376
+      roguelikeitems_176: 1706296839
+      roguelikeitems_177: 1192756130
+      roguelikeitems_178: 380306446
+      roguelikeitems_179: -1261555997
+      roguelikeitems_18: 1127885603
+      roguelikeitems_180: 1235875139
+      roguelikeitems_181: 1186616176
+      roguelikeitems_182: -634255394
+      roguelikeitems_183: -1350657631
+      roguelikeitems_184: 891500885
+      roguelikeitems_185: 2124586841
+      roguelikeitems_186: -1644905469
+      roguelikeitems_187: 774606620
+      roguelikeitems_188: -1357209062
+      roguelikeitems_189: 1866826051
+      roguelikeitems_19: -375142403
+      roguelikeitems_190: -853290167
+      roguelikeitems_191: 1195498131
+      roguelikeitems_192: -1232196311
+      roguelikeitems_2: -110570302
+      roguelikeitems_20: 1499906074
+      roguelikeitems_21: 1106889557
+      roguelikeitems_22: 610051188
+      roguelikeitems_23: -495417357
+      roguelikeitems_24: 1905015166
+      roguelikeitems_25: -1740953533
+      roguelikeitems_26: -1087516111
+      roguelikeitems_27: -437535438
+      roguelikeitems_28: -1765958213
+      roguelikeitems_29: -1864620774
+      roguelikeitems_3: 151014008
+      roguelikeitems_30: -1996109198
+      roguelikeitems_31: -616245811
+      roguelikeitems_32: 1271876534
+      roguelikeitems_33: -1669641195
+      roguelikeitems_34: 233120636
+      roguelikeitems_35: -403201899
+      roguelikeitems_36: 1334018223
+      roguelikeitems_37: -200579179
+      roguelikeitems_38: 95452488
+      roguelikeitems_39: -300305603
+      roguelikeitems_4: 1226241536
+      roguelikeitems_40: -773006517
+      roguelikeitems_41: -2022211319
+      roguelikeitems_42: 2097725640
+      roguelikeitems_43: 1499390798
+      roguelikeitems_44: 1713175602
+      roguelikeitems_45: -1165674232
+      roguelikeitems_46: -731206663
+      roguelikeitems_47: -1351630792
+      roguelikeitems_48: 2066290622
+      roguelikeitems_49: -816171458
+      roguelikeitems_5: -203876710
+      roguelikeitems_50: 668200941
+      roguelikeitems_51: -1519212594
+      roguelikeitems_52: -1113003768
+      roguelikeitems_53: -1826979730
+      roguelikeitems_54: 1186314792
+      roguelikeitems_55: -928748865
+      roguelikeitems_56: 706593037
+      roguelikeitems_57: -862206167
+      roguelikeitems_58: 180767196
+      roguelikeitems_59: 779093243
+      roguelikeitems_6: 2001190426
+      roguelikeitems_60: -1014197679
+      roguelikeitems_61: -1395589328
+      roguelikeitems_62: 1636527229
+      roguelikeitems_63: -117621015
+      roguelikeitems_64: -312936979
+      roguelikeitems_65: 889026631
+      roguelikeitems_66: -608527900
+      roguelikeitems_67: -263895109
+      roguelikeitems_68: -752467598
+      roguelikeitems_69: 1062184022
+      roguelikeitems_7: -1239311341
+      roguelikeitems_70: -824916964
+      roguelikeitems_71: 759439664
+      roguelikeitems_72: -318726261
+      roguelikeitems_73: -1590434304
+      roguelikeitems_74: -869219998
+      roguelikeitems_75: 1770108325
+      roguelikeitems_76: -257095760
+      roguelikeitems_77: 1340323515
+      roguelikeitems_78: -1674891927
+      roguelikeitems_79: 970091257
+      roguelikeitems_8: 1715732186
+      roguelikeitems_80: 341177414
+      roguelikeitems_81: -1753512733
+      roguelikeitems_82: -765372126
+      roguelikeitems_83: -1491649101
+      roguelikeitems_84: 1620105017
+      roguelikeitems_85: -1444063074
+      roguelikeitems_86: -363402028
+      roguelikeitems_87: -1433280909
+      roguelikeitems_88: 1957359501
+      roguelikeitems_89: 1837639664
+      roguelikeitems_9: -512902409
+      roguelikeitems_90: 832029718
+      roguelikeitems_91: -462373016
+      roguelikeitems_92: -471996411
+      roguelikeitems_93: 1875557297
+      roguelikeitems_94: -1537376430
+      roguelikeitems_95: -1839193922
+      roguelikeitems_96: 272259907
+      roguelikeitems_97: -1536720300
+      roguelikeitems_98: -415699297
+      roguelikeitems_99: -7173142
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
