@@ -1997,7 +1997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7e15ff7dd900245a390d8d6128bcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 1077166681}
+  buttonClip: {fileID: 8300000, guid: 0a12f10decdf7be4eba8555693a57e9f, type: 3}
 --- !u!1 &1085924761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2448,7 +2448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7e15ff7dd900245a390d8d6128bcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 1216065143}
+  buttonClip: {fileID: 8300000, guid: 0a12f10decdf7be4eba8555693a57e9f, type: 3}
 --- !u!82 &1216065143
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3804,7 +3804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7e15ff7dd900245a390d8d6128bcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 1835308468}
+  buttonClip: {fileID: 8300000, guid: 0a12f10decdf7be4eba8555693a57e9f, type: 3}
 --- !u!82 &1835308468
 AudioSource:
   m_ObjectHideFlags: 0
