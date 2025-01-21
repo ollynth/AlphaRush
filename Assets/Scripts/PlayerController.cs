@@ -24,12 +24,14 @@ public class PlayerController : MonoBehaviour
     // atur physics
     private Rigidbody2D body;
     private Animator anim;
+    private AudioSource audioSource;
+    public AudioClip jumpSound; // Assign di Inspector
 
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
+        audioSource = GetComponent<AudioSource>();
         currentHP = startHP;
     }
 
@@ -78,6 +80,11 @@ public class PlayerController : MonoBehaviour
         body.velocity = new Vector2(body.velocity.x, jumpSpeed);
         jumpCount++;
         grounded = false;
+        
+        if (jumpSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(jumpSound);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -111,7 +118,6 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player Died");
-        
     }
 
     public void CollectBook()
