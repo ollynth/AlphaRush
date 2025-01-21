@@ -34,3 +34,4 @@ public class BookItem : CollectibleItem
         Destroy(gameObject); // Hancurkan buku setelah dikoleksi
     }
 }
+//

@@ -10,6 +10,8 @@ public class FinishLine : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timeText; // Teks waktu
     [SerializeField] private Timer timer; // Referensi ke Timer
     [SerializeField] private PlayerController player; // Referensi ke PlayerController
+    [SerializeField] private AudioClip winSound; // Sound yang akan diputar saat menang
+    private AudioSource audioSource; // Referensi AudioSource untuk memutar suara
 
     private void Start()
     {
@@ -18,6 +20,9 @@ public class FinishLine : MonoBehaviour
         {
             winPopup.SetActive(false);
         }
+
+        // Dapatkan komponen AudioSource dari GameObject ini
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,6 +42,12 @@ public class FinishLine : MonoBehaviour
 
             // Hentikan waktu
             Time.timeScale = 0;
+
+            // Mainkan sound
+            if (winSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(winSound);
+            }
 
             // Perbarui jumlah buku yang diambil
             if (booksText != null && player != null)
