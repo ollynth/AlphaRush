@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5160462695445517417}
   m_Layer: 0
   m_Name: PlayerSMP
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
+  startHP: 3
+  currentHP: 0
+  hearthManager: {fileID: 0}
+  deathPopup: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 2968f6ddbfba31544948c6baaa735b4a, type: 3}
+  bookManager: {fileID: 0}
+  timer: {fileID: 0}
 --- !u!82 &5160462695445517417
 AudioSource:
   m_ObjectHideFlags: 0
