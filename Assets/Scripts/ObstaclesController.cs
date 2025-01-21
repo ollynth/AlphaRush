@@ -34,4 +34,10 @@ public class ObstaclesController : MonoBehaviour
             }
         }
     }
+
+    public void ReturnToMainMenu()
+    {
+        Time.timeScale = 1; // Waktu kembali normal
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
 }
