@@ -22,13 +22,25 @@ public class CheckpointController : MonoBehaviour
         }
     }
 
-    private void UnlockCheckpoint()
+ private void UnlockCheckpoint()
+{
+    isUnlocked = true;
+    Debug.Log("Checkpoint unlocked: " + gameObject.name);
+    StartCoroutine(AnimateCheckpoint());
+
+    // Kirim posisi checkpoint ke PlayerController
+    GameObject player = GameObject.FindGameObjectWithTag("Player");
+    if (player != null)
     {
-        isUnlocked = true;
-        // Implement your logic to unlock the checkpoint here
-        Debug.Log("Checkpoint unlocked: " + gameObject.name);
-        StartCoroutine(AnimateCheckpoint());
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.SetCheckpoint(transform.position);
+        }
     }
+}
+
+
 
     private IEnumerator AnimateCheckpoint()
     {

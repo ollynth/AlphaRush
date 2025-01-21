@@ -37,6 +37,10 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip jumpSound; // Assign di Inspector
 
+private Vector2 lastCheckpointPosition = Vector2.zero; // Posisi default (awal level)
+private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diaktifkan
+
+
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();
@@ -127,38 +131,86 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int damage)
+   private void TakeDamage(int damage)
+{
+    currentHP -= damage;
+    currentHP = Mathf.Clamp(currentHP, 0, startHP);
+
+    Debug.Log("Player HP: " + currentHP);
+
+    // Update UI via HearthManager
+    if (hearthManager != null)
     {
-        currentHP -= damage;
-        currentHP = Mathf.Clamp(currentHP, 0, startHP);
-
-        Debug.Log("Player HP: " + currentHP);
-
-        // Update UI via HearthManager
-        if (hearthManager != null)
-        {
-            hearthManager.DrawHearths(currentHP, startHP);
-        }
-
-        if (currentHP <= 0)
-        {
-            Die();
-        }
+        hearthManager.DrawHearths(currentHP, startHP);
     }
 
-    private void Die()
+    if (currentHP > 0)
     {
-        Debug.Log("Player Died");
-
-        // Tampilkan pop-up mati
-        if (deathPopup != null)
-        {
-            deathPopup.SetActive(true);
-        }
-
-        // Hentikan semua input pemain
-        Time.timeScale = 0f; // Pause game
+        RespawnAtCheckpoint(); // Jika masih ada HP, kembalikan ke checkpoint
     }
+    else
+    {
+        EndGame(); // Jika HP habis, end game
+    }
+}
+
+public void SetCheckpoint(Vector2 checkpointPosition)
+{
+    lastCheckpointPosition = checkpointPosition;
+    hasCheckpoint = true;
+    Debug.Log("Checkpoint set at: " + lastCheckpointPosition);
+}
+
+private void RespawnAtCheckpoint()
+{
+    if (hasCheckpoint)
+    {
+        Debug.Log("Respawning at checkpoint...");
+        transform.position = lastCheckpointPosition; // Pindahkan ke checkpoint terakhir
+    }
+    else
+    {
+        Debug.Log("No checkpoint found. Respawning at start...");
+        transform.position = Vector2.zero; // Jika belum ada checkpoint, mulai dari awal
+    }
+}
+
+private void EndGame()
+{
+    Debug.Log("Game Over!");
+
+    // Tampilkan pop-up Game Over
+    if (deathPopup != null)
+    {
+        deathPopup.SetActive(true);
+    }
+
+    // Hentikan semua input pemain
+    Time.timeScale = 0f; // Pause game
+}
+
+
+private void ResetToStart()
+{
+    Debug.Log("Respawning at start...");
+    transform.position = Vector2.zero; // Asumsikan posisi awal adalah (0, 0)
+    currentHP = startHP;
+
+    // Update UI
+    if (hearthManager != null)
+    {
+        hearthManager.DrawHearths(currentHP, startHP);
+    }
+
+    // Pastikan pop-up mati tidak muncul
+    if (deathPopup != null)
+    {
+        deathPopup.SetActive(false);
+    }
+
+    // Restart game
+    Time.timeScale = 1f; // Resume game
+}
 
     public BookManager bookManager; // Hubungkan ke GameObject BookManager di Inspector
 
