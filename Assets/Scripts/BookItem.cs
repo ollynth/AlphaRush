@@ -8,6 +8,9 @@ public class BookItem : CollectibleItem
     {
         if (player != null)
         {
+
+            player.CollectBook(); // Tambahkan buku ke koleksi
+
             Debug.Log("Player berhasil mengoleksi buku."); // Log ketika player mengoleksi buku
             
             // Mainkan suara dari prefab Book
@@ -27,6 +30,8 @@ public class BookItem : CollectibleItem
         else
         {
             Debug.LogError("Player tidak ditemukan saat mencoba mengoleksi buku!");
+
         }
+        Destroy(gameObject); // Hancurkan buku setelah dikoleksi
     }
 }
