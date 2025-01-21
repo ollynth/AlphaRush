@@ -34,7 +34,7 @@ public class BacksoundManager : MonoBehaviour
 
     void OnDestroy()
     {
-        // Pastikan listener dihapus ketika objek dihancurkan
+        // Pastikan listener dihapus ketika objek dihancurkann
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
