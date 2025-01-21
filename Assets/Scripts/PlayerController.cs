@@ -8,19 +8,26 @@ public class PlayerController : MonoBehaviour
     // atur speed player
     private float groundSpeed = 5f;
     private float jumpSpeed = 10f;
+
     // atur input player
     private float xInp;
-    private float yInp;
     private bool spaceJump, wJump;
     public bool grounded;
+
     // atur jumlah jump
     private int jumpCount = 0;
     private int maxJumps = 2;
+
     // atur per-bukuan
     private int bookCount = 0;
+
     // atur HP
-    private int startHP = 3;
-    private int currentHP;
+    public int startHP = 3; // Bisa diatur melalui Inspector
+    public int currentHP;
+
+    // Referensi HearthManager
+    public HearthManager hearthManager;
+
     // atur physics
     private Rigidbody2D body;
     private Animator anim;
@@ -33,6 +40,15 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         currentHP = startHP;
+    }
+
+    void Start()
+    {
+        // Pastikan hearthManager menggambar ulang nyawa saat game dimulai
+        if (hearthManager != null)
+        {
+            hearthManager.DrawHearths(currentHP, startHP);
+        }
     }
 
     // Update is called once per frame
@@ -59,6 +75,7 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
             }
         }
+
         if ((spaceJump || wJump) && (grounded || jumpCount < maxJumps))
         {
             Jump();
@@ -67,6 +84,7 @@ public class PlayerController : MonoBehaviour
         // set animator parameters
         anim.SetBool("isWalking", xInp != 0);
     }
+
     private void GetInput()
     {
         // manually set the movement directions
@@ -105,10 +123,20 @@ public class PlayerController : MonoBehaviour
             TakeDamage(1);
         }
     }
+
     private void TakeDamage(int damage)
     {
         currentHP -= damage;
+        currentHP = Mathf.Clamp(currentHP, 0, startHP);
+
         Debug.Log("Player HP: " + currentHP);
+
+        // Update UI via HearthManager
+        if (hearthManager != null)
+        {
+            hearthManager.DrawHearths(currentHP, startHP);
+        }
+
         if (currentHP <= 0)
         {
             Die();
@@ -120,14 +148,26 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player Died");
     }
 
-    public void CollectBook()
-    {
-        bookCount++;
-        Debug.Log("Book Collected: " + bookCount);
-    }
+public BookManager bookManager; // Hubungkan ke GameObject BookManager di Inspector
 
-    public void CollectClock()
+public void CollectBook()
+{
+    bookCount++;
+    Debug.Log("Book Collected: " + bookCount);
+
+    // Perbarui tampilan jumlah buku melalui BookManager
+    if (bookManager != null)
     {
-        Debug.Log("Clock Collected");
+        bookManager.bookCount = bookCount;
     }
 }
+
+    public Timer timer;
+
+ public void CollectClock()
+{
+    Debug.Log("Clock Collected! Time reduced.");
+}
+
+}
+
