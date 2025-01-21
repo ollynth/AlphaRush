@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     // Referensi HearthManager
     public HearthManager hearthManager;
 
+    // Referensi Panel Pop-Up
+    public GameObject deathPopup; // Hubungkan panel di Inspector
+
     // atur physics
     private Rigidbody2D body;
     private Animator anim;
@@ -146,28 +149,40 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player Died");
+
+        // Tampilkan pop-up mati
+        if (deathPopup != null)
+        {
+            deathPopup.SetActive(true);
+        }
+
+        // Hentikan semua input pemain
+        Time.timeScale = 0f; // Pause game
     }
 
-public BookManager bookManager; // Hubungkan ke GameObject BookManager di Inspector
+    public BookManager bookManager; // Hubungkan ke GameObject BookManager di Inspector
 
-public void CollectBook()
-{
-    bookCount++;
-    Debug.Log("Book Collected: " + bookCount);
-
-    // Perbarui tampilan jumlah buku melalui BookManager
-    if (bookManager != null)
+    public void CollectBook()
     {
-        bookManager.bookCount = bookCount;
+        bookCount++;
+        Debug.Log("Book Collected: " + bookCount);
+
+        // Perbarui tampilan jumlah buku melalui BookManager
+        if (bookManager != null)
+        {
+            bookManager.bookCount = bookCount;
+        }
     }
-}
+
+    public int GetBookCount()
+    {
+        return bookCount;
+    }
 
     public Timer timer;
 
- public void CollectClock()
-{
-    Debug.Log("Clock Collected! Time reduced.");
+    public void CollectClock()
+    {
+        Debug.Log("Clock Collected! Time reduced.");
+    }
 }
-
-}
-

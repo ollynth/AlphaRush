@@ -24,7 +24,6 @@ public class BookItem : CollectibleItem
                 Debug.LogWarning("Sound tidak ditemukan! Pastikan collectSound sudah di-assign.");
             }
 
-            player.CollectBook();
             Destroy(gameObject, 0.5f); // Hancurkan objek setelah dikoleksi
         }
         else

@@ -19,16 +19,24 @@ public class Timer : MonoBehaviour
         UpdateTimerText(); // Perbarui teks timer
     }
 
+    // Fungsi untuk mengurangi waktu
     public void ReduceTime(float seconds)
     {
         elapsedTime = Mathf.Max(0, elapsedTime - seconds); // Kurangi waktu, pastikan tidak negatif
         Debug.Log("Time reduced by " + seconds + " seconds. New time: " + elapsedTime);
     }
 
+    // Fungsi untuk mendapatkan waktu yang telah berlalu dalam format menit:detik
+    public string GetElapsedTimeFormatted()
+    {
+        int minute = Mathf.FloorToInt(elapsedTime / 60); // Hitung menit
+        int seconds = Mathf.FloorToInt(elapsedTime % 60); // Hitung detik
+        return string.Format("{0:00}:{1:00}", minute, seconds); // Format waktu
+    }
+
+    // Fungsi untuk memperbarui teks timer
     private void UpdateTimerText()
     {
-        int minute = Mathf.FloorToInt(elapsedTime / 60);
-        int seconds = Mathf.FloorToInt(elapsedTime % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minute, seconds);
+        timerText.text = GetElapsedTimeFormatted(); // Gunakan fungsi GetElapsedTimeFormatted untuk memperbarui teks
     }
 }
