@@ -6,7 +6,8 @@ public class BookItem : CollectibleItem
     {
         if (player != null)
         {
-            player.CollectBook();
+            player.CollectBook(); // Tambahkan buku ke koleksi
         }
+        Destroy(gameObject); // Hancurkan buku setelah dikoleksi
     }
 }
