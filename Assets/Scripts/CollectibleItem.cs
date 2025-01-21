@@ -29,7 +29,15 @@ public abstract class CollectibleItem : MonoBehaviour
     {
         if (audioSource != null && collectSound != null)
         {
+            audioSource.enabled = true;
             audioSource.Play();
+            // // Pastikan AudioSource aktif
+            // if (!audioSource.isActiveAndEnabled)
+            // {
+            //     audioSource.enabled = true;
+            // }
+            
+            // audioSource.PlayOneShot(collectSound);
         }
     }
 }

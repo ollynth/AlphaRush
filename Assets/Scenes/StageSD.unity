@@ -2845,8 +2845,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1441331945}
   - component: {fileID: 1441331944}
-  - component: {fileID: 1441331943}
   - component: {fileID: 1441331946}
+  - component: {fileID: 1441331950}
   - component: {fileID: 1441331947}
   - component: {fileID: 1441331949}
   - component: {fileID: 1441331948}
@@ -2857,14 +2857,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1441331943
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441331942}
-  m_Enabled: 1
 --- !u!20 &1441331944
 Camera:
   m_ObjectHideFlags: 0
@@ -3005,7 +2997,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -3098,6 +3090,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35375b883c11a4e4fb956a7747209d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &1441331950
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441331942}
+  m_Enabled: 1
 --- !u!1001 &1756364593
 PrefabInstance:
   m_ObjectHideFlags: 0
