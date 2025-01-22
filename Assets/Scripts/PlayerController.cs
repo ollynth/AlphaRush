@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip jumpSound; // Assign di Inspector
 
+    public AudioClip diedSound; // Assign di Inspector
+
 private Vector2 lastCheckpointPosition = Vector2.zero; // Posisi default (awal level)
 private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diaktifkan
 
@@ -131,86 +133,98 @@ private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diakti
         }
     }
 
-   private void TakeDamage(int damage)
-{
-    currentHP -= damage;
-    currentHP = Mathf.Clamp(currentHP, 0, startHP);
-
-    Debug.Log("Player HP: " + currentHP);
-
-    // Update UI via HearthManager
-    if (hearthManager != null)
+    private void TakeDamage(int damage)
     {
-        hearthManager.DrawHearths(currentHP, startHP);
+        currentHP -= damage;
+        currentHP = Mathf.Clamp(currentHP, 0, startHP);
+
+        Debug.Log("Player HP: " + currentHP);
+
+        // Update UI via HearthManager
+        if (hearthManager != null)
+        {
+            hearthManager.DrawHearths(currentHP, startHP);
+        }
+
+        if (currentHP > 0)
+        {
+            RespawnAtCheckpoint(); // Jika masih ada HP, kembalikan ke checkpoint
+        }
+        else
+        {
+            EndGame(); // Jika HP habis, end game
+        }
     }
 
-    if (currentHP > 0)
+    public void SetCheckpoint(Vector2 checkpointPosition)
     {
-        RespawnAtCheckpoint(); // Jika masih ada HP, kembalikan ke checkpoint
-    }
-    else
-    {
-        EndGame(); // Jika HP habis, end game
-    }
-}
-
-public void SetCheckpoint(Vector2 checkpointPosition)
-{
-    lastCheckpointPosition = checkpointPosition;
-    hasCheckpoint = true;
-    Debug.Log("Checkpoint set at: " + lastCheckpointPosition);
-}
-
-private void RespawnAtCheckpoint()
-{
-    if (hasCheckpoint)
-    {
-        Debug.Log("Respawning at checkpoint...");
-        transform.position = lastCheckpointPosition; // Pindahkan ke checkpoint terakhir
-    }
-    else
-    {
-        Debug.Log("No checkpoint found. Respawning at start...");
-        transform.position = Vector2.zero; // Jika belum ada checkpoint, mulai dari awal
-    }
-}
-
-private void EndGame()
-{
-    Debug.Log("Game Over!");
-
-    // Tampilkan pop-up Game Over
-    if (deathPopup != null)
-    {
-        deathPopup.SetActive(true);
+        lastCheckpointPosition = checkpointPosition;
+        hasCheckpoint = true;
+        Debug.Log("Checkpoint set at: " + lastCheckpointPosition);
     }
 
-    // Hentikan semua input pemain
-    Time.timeScale = 0f; // Pause game
-}
-
-
-private void ResetToStart()
-{
-    Debug.Log("Respawning at start...");
-    transform.position = Vector2.zero; // Asumsikan posisi awal adalah (0, 0)
-    currentHP = startHP;
-
-    // Update UI
-    if (hearthManager != null)
+    private void RespawnAtCheckpoint()
     {
-        hearthManager.DrawHearths(currentHP, startHP);
+        if (hasCheckpoint)
+        {
+            Debug.Log("Respawning at checkpoint...");
+            transform.position = lastCheckpointPosition; // Pindahkan ke checkpoint terakhir
+        }
+        else
+        {
+            Debug.Log("No checkpoint found. Respawning at start...");
+            transform.position = Vector2.zero; // Jika belum ada checkpoint, mulai dari awal
+        }
     }
 
-    // Pastikan pop-up mati tidak muncul
-    if (deathPopup != null)
+    private void EndGame()
     {
-        deathPopup.SetActive(false);
+        Debug.Log("Game Over!");
+
+        if (diedSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(diedSound);
+        }
+
+        // Matikan semua suara dari AudioSource di Main Camera
+        AudioSource mainCameraAudio = Camera.main?.GetComponent<AudioSource>();
+        if (mainCameraAudio != null)
+        {
+            mainCameraAudio.Stop();
+        }
+
+        // Tampilkan pop-up Game Over
+        if (deathPopup != null)
+        {
+            deathPopup.SetActive(true);
+        }
+
+        // Hentikan semua input pemain
+        Time.timeScale = 0f; // Pause game
     }
 
-    // Restart game
-    Time.timeScale = 1f; // Resume game
-}
+
+    private void ResetToStart()
+    {
+        Debug.Log("Respawning at start...");
+        transform.position = Vector2.zero; // Asumsikan posisi awal adalah (0, 0)
+        currentHP = startHP;
+
+        // Update UI
+        if (hearthManager != null)
+        {
+            hearthManager.DrawHearths(currentHP, startHP);
+        }
+
+        // Pastikan pop-up mati tidak muncul
+        if (deathPopup != null)
+        {
+            deathPopup.SetActive(false);
+        }
+
+        // Restart game
+        Time.timeScale = 1f; // Resume game
+    }
 
     public BookManager bookManager; // Hubungkan ke GameObject BookManager di Inspector
 
