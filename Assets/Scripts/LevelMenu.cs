@@ -8,27 +8,40 @@ public class LevelMenu : MonoBehaviour
 {
     public Button[] buttons;
 
+    //public void ResetProgress()
+    //{
+    //    PlayerPrefs.SetInt("UnlockedLevel", 1); // Reset progress to only unlock Level 1
+    //    PlayerPrefs.Save();
+    //    Awake(); // Refresh the level buttons
+    //}
+
     private void Awake() {
 
-        buttons[1].interactable = false;
-        buttons[2].interactable = false;
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1); // Default is 1 (first level unlocked)
 
-        /*
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
-        for (int i = 0; i < buttons.length; i++){
-            buttons[i].interactable = false;
+        // Ensure only the correct levels are interactable
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].interactable = (i < unlockedLevel); // Unlock levels up to the stored value
         }
-
-        for (int i = 0; i < unlockedLevel.length; i++){
-            buttons[i].interactable = true;
-        }
-        */
     }
 
 
     public void OpenLevel(int levelId) {
         SceneManager.LoadSceneAsync(levelId);
 
+    }
+
+    // This should be called when a level is completed
+    public static void UnlockNextLevel(int currentLevel)
+    {
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+
+        if (currentLevel >= unlockedLevel) // Ensure we don't overwrite higher progress
+        {
+            PlayerPrefs.SetInt("UnlockedLevel", currentLevel + 1); // Unlock next level
+            PlayerPrefs.Save(); // Save changes
+        }
     }
 
     
