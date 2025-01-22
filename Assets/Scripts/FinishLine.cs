@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro; // Untuk teks UI
 
 public class FinishLine : MonoBehaviour
@@ -29,6 +30,7 @@ public class FinishLine : MonoBehaviour
     {
         if (collision.CompareTag("Player")) // Jika objek yang menyentuh adalah player
         {
+            LevelMenu.UnlockNextLevel(SceneManager.GetActiveScene().buildIndex);
             ShowWinPopup();
         }
     }
