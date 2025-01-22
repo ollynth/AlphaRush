@@ -8,28 +8,35 @@ public class LevelMenu : MonoBehaviour
 {
     public Button[] buttons;
 
-    private void Awake() {
-
-        buttons[1].interactable = false;
-        buttons[2].interactable = false;
-
-        /*
+    private void Awake() 
+    {
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
-        for (int i = 0; i < buttons.length; i++){
+        
+        // Nonaktifkan semua button terlebih dahulu
+        for (int i = 0; i < buttons.Length; i++)
+        {
             buttons[i].interactable = false;
         }
 
-        for (int i = 0; i < unlockedLevel.length; i++){
-            buttons[i].interactable = true;
+        // Aktifkan button sesuai level yang sudah terbuka
+        for (int i = 0; i < unlockedLevel; i++)
+        {
+            if (i < buttons.Length)
+            {
+                buttons[i].interactable = true;
+            }
         }
-        */
     }
 
-
-    public void OpenLevel(int levelId) {
-        SceneManager.LoadSceneAsync(levelId);
-
+    public void OpenLevel(int levelId) 
+    {
+        if (levelId >= 0 && levelId < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadSceneAsync(levelId);
+        }
+        else
+        {
+            Debug.LogError($"Invalid level ID: {levelId}");
+        }
     }
-
-    
 }

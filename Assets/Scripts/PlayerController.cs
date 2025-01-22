@@ -42,6 +42,13 @@ public class PlayerController : MonoBehaviour
 private Vector2 lastCheckpointPosition = Vector2.zero; // Posisi default (awal level)
 private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diaktifkan
 
+    [SerializeField] private BookManager bookManager; // Ubah menjadi SerializeField dan private
+
+    [Header("Ground Check Settings")]
+    [SerializeField] private float groundCheckDistance = 0.1f;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Vector2 groundCheckSize = new Vector2(0.4f, 0.1f);
+    [SerializeField] private Vector2 groundCheckOffset = new Vector2(0, -0.5f);
 
     void Awake()
     {
@@ -63,6 +70,7 @@ private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diakti
     // Update is called once per frame
     void Update()
     {
+        CheckGrounded(); // Panggil di setiap frame
         HandleMovements();
     }
 
@@ -70,28 +78,33 @@ private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diakti
     {
         GetInput();
 
-        if (Mathf.Abs(xInp) > 0)
-        {
-            body.velocity = new Vector2(xInp * groundSpeed, body.velocity.y);
+        float moveSpeed = groundSpeed;
+        float targetVelocityX = xInp * moveSpeed;
 
-            // flip the player
-            if (xInp > 0.01f)
-            {
-                transform.localScale = Vector3.one;
-            }
-            else if (xInp < -0.01f)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
+        // Smooth out the movement
+        float smoothing = grounded ? 0.1f : 0.2f;
+        body.velocity = new Vector2(
+            Mathf.Lerp(body.velocity.x, targetVelocityX, 1 - smoothing),
+            body.velocity.y
+        );
+
+        // Flip player
+        if (xInp > 0.01f)
+        {
+            transform.localScale = Vector3.one;
+        }
+        else if (xInp < -0.01f)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
+        // Jump handling
         if ((spaceJump || wJump) && (grounded || jumpCount < maxJumps))
         {
             Jump();
         }
 
-        // set animator parameters
-        anim.SetBool("isWalking", xInp != 0);
+        anim.SetBool("isWalking", Mathf.Abs(xInp) > 0.01f);
     }
 
     private void GetInput()
@@ -104,10 +117,22 @@ private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diakti
 
     private void Jump()
     {
-        body.velocity = new Vector2(body.velocity.x, jumpSpeed);
+        float jumpVelocity = jumpSpeed;
+        
+        // Jika melompat saat bergerak, tambahkan sedikit momentum horizontal
+        if (Mathf.Abs(body.velocity.x) > 0.1f)
+        {
+            float horizontalBoost = Mathf.Sign(body.velocity.x) * 2f;
+            body.velocity = new Vector2(body.velocity.x + horizontalBoost, jumpVelocity);
+        }
+        else
+        {
+            body.velocity = new Vector2(body.velocity.x, jumpVelocity);
+        }
+
         jumpCount++;
         grounded = false;
-        
+
         if (jumpSound != null && audioSource != null)
         {
             audioSource.PlayOneShot(jumpSound);
@@ -226,17 +251,13 @@ private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diakti
         Time.timeScale = 1f; // Resume game
     }
 
-    public BookManager bookManager; // Hubungkan ke GameObject BookManager di Inspector
-
     public void CollectBook()
     {
         bookCount++;
-        Debug.Log("Book Collected: " + bookCount);
 
-        // Perbarui tampilan jumlah buku melalui BookManager
         if (bookManager != null)
         {
-            bookManager.bookCount = bookCount;
+            bookManager.AddBook();
         }
     }
 
@@ -250,5 +271,52 @@ private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diakti
     public void CollectClock()
     {
         Debug.Log("Clock Collected! Time reduced.");
+    }
+
+    private void CheckGrounded()
+    {
+        // Posisi untuk ground check
+        Vector2 position = (Vector2)transform.position + groundCheckOffset;
+        
+        // Gunakan BoxCast untuk ground check yang lebih akurat
+        RaycastHit2D hit = Physics2D.BoxCast(
+            position,                  // origin
+            groundCheckSize,           // size
+            0f,                       // angle
+            Vector2.down,             // direction
+            groundCheckDistance,       // distance
+            groundLayer               // layer mask
+        );
+
+        grounded = hit.collider != null;
+        
+        if (grounded)
+        {
+            jumpCount = 0;
+            
+            // Cek apakah player di pinggiran
+            float platformWidth = 0.1f;
+            bool leftEdge = !Physics2D.Raycast(position + Vector2.left * platformWidth, Vector2.down, groundCheckDistance, groundLayer);
+            bool rightEdge = !Physics2D.Raycast(position + Vector2.right * platformWidth, Vector2.down, groundCheckDistance, groundLayer);
+            
+            // Jika di pinggiran, berikan sedikit dorongan ke tengah platform
+            if (leftEdge && body.velocity.x < 0)
+            {
+                body.velocity = new Vector2(body.velocity.x * 0.8f, body.velocity.y);
+            }
+            else if (rightEdge && body.velocity.x > 0)
+            {
+                body.velocity = new Vector2(body.velocity.x * 0.8f, body.velocity.y);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Visualisasi ground check
+        Gizmos.color = Color.green;
+        Vector2 position = (Vector2)transform.position + groundCheckOffset;
+        Gizmos.DrawWireCube(position, groundCheckSize);
+        Gizmos.DrawLine(position, position + Vector2.down * groundCheckDistance);
     }
 }

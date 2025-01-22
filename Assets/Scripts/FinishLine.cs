@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; // Untuk teks UI
+using UnityEngine.SceneManagement;
 
 public class FinishLine : MonoBehaviour
 {
@@ -73,6 +74,15 @@ public class FinishLine : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1; // Waktu kembali normal
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        
+        int sceneIndex = SceneUtility.GetBuildIndexByScenePath("Scenes/MainMenu");
+        if (sceneIndex != -1)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        else
+        {
+            Debug.LogError("MainMenu scene not found in build settings!");
+        }
     }
 }

@@ -8,30 +8,13 @@ public class BookItem : CollectibleItem
     {
         if (player != null)
         {
-
-            player.CollectBook(); // Tambahkan buku ke koleksi
-
-            Debug.Log("Player berhasil mengoleksi buku."); // Log ketika player mengoleksi buku
+            player.CollectBook();
             
-            // Mainkan suara dari prefab Book
             if (collectSound != null)
             {
                 AudioSource.PlayClipAtPoint(collectSound, transform.position);
-                Debug.Log("Sound berhasil diputar: " + collectSound.name); // Log nama sound yang dimainkan
             }
-            else
-            {
-                Debug.LogWarning("Sound tidak ditemukan! Pastikan collectSound sudah di-assign.");
-            }
-
-            Destroy(gameObject, 0.5f); // Hancurkan objek setelah dikoleksi
         }
-        else
-        {
-            Debug.LogError("Player tidak ditemukan saat mencoba mengoleksi buku!");
-
-        }
-        Destroy(gameObject); // Hancurkan buku setelah dikoleksi
     }
 }
 //

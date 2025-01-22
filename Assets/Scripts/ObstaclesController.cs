@@ -22,13 +22,11 @@ public class ObstaclesController : MonoBehaviour
             // Change direction if no ground detected
             if (movingRight)
             {
-                Debug.Log("No ground detected, moving left");
                 transform.eulerAngles = new Vector3(0, -180, 0);
                 movingRight = false;
             }
             else
             {
-                Debug.Log("No ground detected, moving right");
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 movingRight = true;
             }

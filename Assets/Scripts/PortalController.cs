@@ -4,29 +4,27 @@ using UnityEngine;
 
 public class PortalController : MonoBehaviour
 {
-    public GameObject WinPanel; // Referensi ke pop-up UI menang
+    [SerializeField] private GameObject winPanel;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Something entered the portal trigger."); // Tambahkan log ini
-
-        if (other.CompareTag("Player")) // Periksa jika objek yang masuk adalah player
+        if (collision.CompareTag("Player"))
         {
-            Debug.Log("Player entered the portal!"); // Tambahkan log ini
+            Debug.Log("Player entered the portal!");
             ShowWinPopup();
         }
     }
 
-    void ShowWinPopup()
+    private void ShowWinPopup()
     {
-        if (WinPanel != null)
+        if (winPanel != null)
         {
-            Debug.Log("Activating WinPanel!"); // Tambahkan log ini
-            WinPanel.SetActive(true); // Aktifkan pop-up menang
+            winPanel.SetActive(true);
+            Time.timeScale = 0f; // Pause game ketika menang
         }
         else
         {
-            Debug.LogWarning("WinPanel belum disambungkan di Inspector.");
+            Debug.LogError("WinPanel reference is missing!");
         }
     }
 }

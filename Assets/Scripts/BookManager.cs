@@ -1,27 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro; // Gunakan TextMeshPro
 
 public class BookManager : MonoBehaviour
 {
-    public int bookCount; // Jumlah buku yang dikoleksi
-    public Text bookText; // UI Text untuk menampilkan jumlah buku
+    [SerializeField] private TextMeshProUGUI bookCounterText; // Referensi ke TextMeshPro
+    private int bookCount; // Jumlah buku yang dikoleksi
 
     void Start()
     {
-        bookCount = 0; // Awal jumlah buku adalah 0
+        // Validasi referensi
+        if (bookCounterText == null)
+        {
+            Debug.LogError("Book Counter Text belum di-assign! Assign di inspector.", this);
+            enabled = false;
+            return;
+        }
+        
+        bookCount = 0;
         UpdateBookText();
     }
 
-    void Update()
+    // Method untuk menambah jumlah buku
+    public void AddBook()
     {
-        // Jika jumlah buku diperbarui, perbarui teks
+        bookCount++;
         UpdateBookText();
     }
 
+    // Method untuk mendapatkan jumlah buku
+    public int GetBookCount()
+    {
+        return bookCount;
+    }
+
+    // Update tampilan text
     private void UpdateBookText()
     {
-        bookText.text = "Books Collected: " + bookCount.ToString();
+        if (bookCounterText != null)
+        {
+            bookCounterText.text = $"Books: {bookCount}";
+        }
     }
 }
