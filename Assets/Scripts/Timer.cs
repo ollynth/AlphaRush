@@ -10,7 +10,16 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        elapsedTime = 0f; // Timer dimulai dari 0
+        if (timerText == null)
+        {
+            timerText = FindObjectOfType<TextMeshProUGUI>();
+            if (timerText == null)
+            {
+                Debug.LogError("No TextMeshProUGUI component found in the scene!");
+            }
+        }
+
+        elapsedTime = 0f;
     }
 
     void Update()
@@ -37,6 +46,13 @@ public class Timer : MonoBehaviour
     // Fungsi untuk memperbarui teks timer
     private void UpdateTimerText()
     {
-        timerText.text = GetElapsedTimeFormatted(); // Gunakan fungsi GetElapsedTimeFormatted untuk memperbarui teks
+        if (timerText != null)
+        {
+            timerText.text = GetElapsedTimeFormatted();
+        }
+        else
+        {
+            Debug.LogError("timerText is not assigned in the Inspector!", this);
+        }
     }
 }
