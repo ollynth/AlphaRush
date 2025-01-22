@@ -133,7 +133,7 @@ private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diakti
         }
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, startHP);
@@ -251,4 +251,19 @@ private bool hasCheckpoint = false; // Menentukan apakah checkpoint telah diakti
     {
         Debug.Log("Clock Collected! Time reduced.");
     }
+
+    public void Heal(int amount)
+{
+    currentHP += amount;
+    currentHP = Mathf.Clamp(currentHP, 0, startHP); // Jangan melebihi max HP
+
+    Debug.Log("Player HP after healing: " + currentHP);
+
+    // Perbarui UI nyawa melalui HearthManager
+    if (hearthManager != null)
+    {
+        hearthManager.DrawHearths(currentHP, startHP);
+    }
+}
+
 }
