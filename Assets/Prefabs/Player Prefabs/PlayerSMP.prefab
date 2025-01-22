@@ -126,6 +126,7 @@ MonoBehaviour:
   hearthManager: {fileID: 0}
   deathPopup: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: 2968f6ddbfba31544948c6baaa735b4a, type: 3}
+  diedSound: {fileID: 8300000, guid: 46c83b53ab703ea4b9cc12d258cd563c, type: 3}
   bookManager: {fileID: 0}
   timer: {fileID: 0}
 --- !u!82 &5160462695445517417
