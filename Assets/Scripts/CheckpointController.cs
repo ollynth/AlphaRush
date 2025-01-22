@@ -8,10 +8,12 @@ public class CheckpointController : MonoBehaviour
     private enum CPState { Locked, Unlocking, Unlocked }
     private CPState stateCP = CPState.Locked;
     private Animator anim;
+    private AudioSource audioSource; // Tambahkan variabel AudioSource
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>(); // Ambil komponen AudioSource
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,25 +24,24 @@ public class CheckpointController : MonoBehaviour
         }
     }
 
- private void UnlockCheckpoint()
-{
-    isUnlocked = true;
-    Debug.Log("Checkpoint unlocked: " + gameObject.name);
-    StartCoroutine(AnimateCheckpoint());
-
-    // Kirim posisi checkpoint ke PlayerController
-    GameObject player = GameObject.FindGameObjectWithTag("Player");
-    if (player != null)
+    private void UnlockCheckpoint()
     {
-        PlayerController playerController = player.GetComponent<PlayerController>();
-        if (playerController != null)
+        isUnlocked = true;
+        Debug.Log("Checkpoint unlocked: " + gameObject.name);
+        PlaySound(); // Mainkan sound saat checkpoint di-unlock
+        StartCoroutine(AnimateCheckpoint());
+
+        // Kirim posisi checkpoint ke PlayerController
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            playerController.SetCheckpoint(transform.position);
+            PlayerController playerController = player.GetComponent<PlayerController>();
+            if (playerController != null)
+            {
+                playerController.SetCheckpoint(transform.position);
+            }
         }
     }
-}
-
-
 
     private IEnumerator AnimateCheckpoint()
     {
@@ -69,5 +70,18 @@ public class CheckpointController : MonoBehaviour
         }
 
         anim.SetInteger("CPState", (int)stateCP);
+    }
+
+    // Method untuk memainkan sound
+    private void PlaySound()
+    {
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.Play(); // Mainkan audio clip
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource atau AudioClip tidak tersedia pada " + gameObject.name);
+        }
     }
 }
